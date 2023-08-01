@@ -10,10 +10,8 @@ namespace ORM_Dapper
 	{
 		public int ProductId { get; set; }
 		public string Name { get; set; }
-		public int Price { get; set; }
-		public int CategoreyId { get; set; }
-		public int OnSale { get; set; }
-		public int StockLevel { get; set; }
+		public Double Price { get; set; }
+		public int CategoryId { get; set; }
 		public int DepartmentId { get; set; }
 	}
 }

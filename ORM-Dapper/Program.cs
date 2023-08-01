@@ -43,10 +43,10 @@ namespace ORM_Dapper
 			var allProducts = productRepo.GetallProducts();
 			foreach (var product in allProducts)
 			{
-				Console.WriteLine(product.Name);
-				Console.WriteLine(product.ProductId);
-				Console.WriteLine(product.DepartmentId);
-                Console.WriteLine(product.Price);
+				Console.WriteLine($"Name: {product.Name}");
+				Console.WriteLine($"ProductID: {product.ProductId}");
+				Console.WriteLine($"CategoryID: {product.CategoryId}");
+                Console.WriteLine($"Price: {product.Price}");
                 Console.WriteLine();
 				Console.WriteLine();
 			}
@@ -56,7 +56,7 @@ namespace ORM_Dapper
 			Console.WriteLine($"Product update status: {isUpdated}");
 
 			//call DeleteProducts
-			var deleteProduct = 949;
+			var deleteProduct = 950;
 			var isDeleted = productRepo.DeleteProduct(deleteProduct);
 			Console.WriteLine($"Product delete Status: {isDeleted}");
 

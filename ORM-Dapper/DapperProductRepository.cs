@@ -42,14 +42,14 @@ namespace ORM_Dapper
 
 		public IEnumerable<products> GetallProducts()
 		{
-			var Query = "SELECT * FROM PRODUCTS";
+			var Query = "SELECT ProductId, Name, Price, CategoryId FROM Products";
 			return _conn.Query<products>(Query);
 		}
 
 		public bool UpdateProduct(int productId, string name, double price, int categoryId)
 		{
-			var query = "UPDATE Products SET Name = @Name, Price = @Price, CategoryId = @CategoryId WHERE ProductID = @ProductID;";
-			var parameters = new { ProductID = productId, Name = name, Price = price, CategoryId = categoryId };
+			var query = "UPDATE Products SET Name = @Name, Price = @price, CategoryId = @CategoryID WHERE ProductID = @ProductID;";
+			var parameters = new { ProductID = productId, Name = name, Price = price, CategoryID = categoryId };
 
 			var affectedRows = _conn.Execute(query, parameters);
 			return affectedRows > 0;
