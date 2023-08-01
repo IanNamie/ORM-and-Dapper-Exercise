@@ -2,6 +2,9 @@
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Net.Http.Headers;
+using System;
+using System.Data;
+using System.IO;
 
 namespace ORM_Dapper
 {
@@ -29,6 +32,34 @@ namespace ORM_Dapper
                 Console.WriteLine();
                 Console.WriteLine();
             }
+
+			var productRepo = new DapperProductRepository(conn);
+
+			// Call CreateProducts method
+			var products = productRepo.CreateProducts("Product Name", 10.99, 1);
+			Console.WriteLine($"New Product ID: {products}");
+
+			// Call GetAllProducts method
+			var allProducts = productRepo.GetallProducts();
+			foreach (var product in allProducts)
+			{
+				Console.WriteLine(product.Name);
+				Console.WriteLine(product.ProductId);
+				Console.WriteLine(product.DepartmentId);
+                Console.WriteLine(product.Price);
+                Console.WriteLine();
+				Console.WriteLine();
+			}
+			// Call UpdateProducts method
+			var productIdToUpdate = 948; // Replace with the actual ID of the product you want to update
+			var isUpdated = productRepo.UpdateProduct(productIdToUpdate, "Ian's updated product", 15.99, 10);
+			Console.WriteLine($"Product update status: {isUpdated}");
+
+			//call DeleteProducts
+			var deleteProduct = 949;
+			var isDeleted = productRepo.DeleteProduct(deleteProduct);
+			Console.WriteLine($"Product delete Status: {isDeleted}");
+
 		}
     }
 }
